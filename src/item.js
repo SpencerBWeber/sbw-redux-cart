@@ -1,6 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+
+import { addToCart } from "./store/actions/products";
 
 const Item = props => {
+  const dispatch = useDispatch();
+
   return (
     <div className="item">
       <img src="https://source.unsplash.com/random" alt="img" />
@@ -12,7 +17,9 @@ const Item = props => {
 
         <p>{props.description}</p>
         <div className="button">
-          <button>Add To Cart</button>
+          <button onClick={() => dispatch(addToCart(props.id))}>
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>
