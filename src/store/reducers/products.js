@@ -10,8 +10,17 @@ const initialState = {
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      console.log("ADD TO CART ACTION FIRED", action.productId);
-      return state;
+      const addedItem = state.products.find(
+        product => product.id === action.productId
+      );
+      return {
+        ...state,
+        cart: [...state.cart, addedItem],
+        products: state.products.filter(
+          product => product.id !== action.productId
+        ),
+        total: state.total + addedItem.price
+      };
     default:
       return state;
   }

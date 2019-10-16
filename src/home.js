@@ -1,13 +1,9 @@
 import React from "react";
 import Item from "./item";
-import mockData from "./mockData";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const [products, setProducts] = React.useState(mockData);
-
-  React.useEffect(() => {
-    setProducts(mockData);
-  }, []);
+  const products = useSelector(state => state.products.products);
 
   const renderProducts = () => {
     return products.map(product => {
