@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import { addToCart } from "./store/actions/products";
+import { addToCart, removeFromCart } from "./store/actions/products";
 
 const Item = props => {
   const dispatch = useDispatch();
@@ -17,9 +17,15 @@ const Item = props => {
 
         <p>{props.description}</p>
         <div className="button">
-          <button onClick={() => dispatch(addToCart(props.id))}>
-            Add To Cart
-          </button>
+          {props.inCart ? (
+            <button onClick={() => dispatch(removeFromCart(props.id))}>
+              Remove From Cart
+            </button>
+          ) : (
+            <button onClick={() => dispatch(addToCart(props.id))}>
+              Add To Cart
+            </button>
+          )}
         </div>
       </div>
     </div>
