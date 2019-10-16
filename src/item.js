@@ -7,7 +7,7 @@ const Item = props => {
       <div className="meta">
         <div className="top-level">
           <p>{props.name}</p>
-          <p>{props.price}</p>
+          <p>${props.price}</p>
         </div>
 
         <p>{props.description}</p>
