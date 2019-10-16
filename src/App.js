@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useRoutes, A } from "hookrouter";
+
+import Home from "./home";
+import Cart from "./cart";
+import "./App.css";
+
+const routes = {
+  "/": () => <Home />,
+  "/cart": () => <Cart />
+};
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <A href="/">Home</A>
+      <A href="/cart">Cart</A>
+      {useRoutes(routes)}
     </div>
   );
 }
